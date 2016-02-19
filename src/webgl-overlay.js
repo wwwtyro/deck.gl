@@ -22,7 +22,7 @@
 import React, {PropTypes} from 'react';
 import WebGLRenderer from './webgl-renderer';
 import flatWorld from './flat-world';
-import where from 'lodash.where';
+import filter from 'lodash.filter';
 import assert from 'assert';
 
 const PROP_TYPES = {
@@ -103,7 +103,10 @@ export default class WebGLOverlay extends React.Component {
   }
 
   _findMatchingLayer(layer) {
-    const candidates = where(this.props.layers, {id: layer.id});
+    const candidates = filter(this.props.layers, function(l) {
+      return l.props.id === layer.props.id;
+    });
+    // const candidates = where(this.props.layers, {id: layer.id});
     if (candidates.length > 1) {
       throw new Error(layer + ' has more than one matching layers');
     }

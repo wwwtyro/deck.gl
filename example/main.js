@@ -43,7 +43,7 @@ import {
 } from '../src';
 
 // ---- Default Settings ---- //
-const MAPBOX_ACCESS_TOKEN = 'PUT_YOUR_TOKEN_HERE';
+const MAPBOX_ACCESS_TOKEN = process.env.MAPBOX_ACCESS_TOKEN || 'Set MAPBOX_ACCESS_TOKEN environment variable or put your token here.';
 
 const INITIAL_STATE = {
   viewport: {
@@ -204,6 +204,7 @@ class ExampleApp extends React.Component {
       longitude: viewport.longitude,
       zoom: viewport.zoom,
       layerIndex: 0,
+      opacity: 1,
       data: points
     });
   }

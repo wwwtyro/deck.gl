@@ -156,6 +156,7 @@ export default class WebGLRenderer extends React.Component {
   }
 
   _onMouseMove(e) {
+return; /////////////// debug
     const {scene} = this.state;
 
     for (const model of scene.models) {
